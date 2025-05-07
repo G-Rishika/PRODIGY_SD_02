@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f8ff;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .result, .best-score {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100</p>
+
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <button onclick="resetGame()">Reset Game</button>
+
+    <div class="result" id="result"></div>
+    <div class="best-score" id="bestScoreDisplay"></div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+        let bestScore = localStorage.getItem("bestScore");
+
+        const result = document.getElementById('result');
+        const bestScoreDisplay = document.getElementById('bestScoreDisplay');
+
+        function updateBestScoreDisplay() {
+            bestScoreDisplay.textContent = bestScore 
+                ? `Best Score: ${bestScore} attempt(s)` 
+                : `No best score yet. Try your best!`;
+        }
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            if (isNaN(userGuess)) {
+                result.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            attempts++;
+
+            if (userGuess > randomNumber) {
+                result.textContent = "Too high! Try again.";
+            } else if (userGuess < randomNumber) {
+                result.textContent = "Too low! Try again.";
+            } else {
+                result.textContent = `Correct! You guessed it in ${attempts} attempt(s).`;
+
+                if (!bestScore || attempts < bestScore) {
+                    localStorage.setItem("bestScore", attempts);
+                    bestScore = attempts;
+                    updateBestScoreDisplay();
+                }
+
+                // Prepare for new round
+                randomNumber = Math.floor(Math.random() * 100) + 1;
+                attempts = 0;
+            }
+        }
+
+        function resetGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            result.textContent = "Game has been reset. Start guessing!";
+            document.getElementById('guess').value = '';
+        }
+
+        updateBestScoreDisplay();
+    </script>
+
+</body>
+</html>
 
