@@ -1,6 +1,7 @@
-Number Guessing Game
+Number Guessing Game - Internship Task 2
 
-This is a simple web-based application where the user tries to guess a randomly generated number between 1 and 100. The game provides real-time feedback and tracks the user's best score across sessions using browser storage.
+This is a simple web-based application where the user tries to guess a randomly generated number between 1 and 100. 
+The game provides real-time feedback and tracks the user's best score across sessions using browser storage.
 
 Features
 
@@ -24,3 +25,12 @@ How to Play
   Read the feedback and continue guessing until you get it right.
   After a correct guess, the game checks if it's your best score.
   Use Reset Game to start a new round.
+
+Learning Outcomes
+
+  Gained practical experience in HTML, CSS, and JavaScript.
+  Learned to manipulate the DOM and handle user events.
+  Applied conditional logic and random number generation.
+  Used localStorage to persist best scores across sessions.
+  Improved UI design skills with simple, responsive layouts.
+  Strengthened debugging and testing practices.
