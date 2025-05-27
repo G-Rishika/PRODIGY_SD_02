@@ -34,3 +34,7 @@ Learning Outcomes
   Used localStorage to persist best scores across sessions.
   Improved UI design skills with simple, responsive layouts.
   Strengthened debugging and testing practices.
+
+Created by 
+  Rishika.G,
+  B.Sc Computer Science with Artificial Intelligence 
